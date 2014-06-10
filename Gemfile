@@ -5,20 +5,14 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
-
-# 'The system should be as ORM agnostic as possible'
-
-
-# # Well, this is technically, it's not ORM-independence, but it is DB independent
-# gem 'data_mapper'
-# # File storage
-# gem 'carrierwave'
-# # Connect those two
-# gem 'carrierwave-datamapper', :require => 'carrierwave/datamapper'
-
-# # We need some concrete implementation here, let it be sqlite
-# gem 'dm-sqlite-adapter'
-# # ON THE OTHER HAND, data mapper seems to be outdated, find another solution
+# ORM
+gem 'mongoid', github: 'mongoid/mongoid'
+# For file storage
+gem 'mongoid-paperclip', :require => "mongoid_paperclip"
+# Managing user login
+gem 'devise'
+# Managin ticket transactions
+gem 'state_machine'
 
 # ASSETS / VIEWS
 
@@ -36,5 +30,5 @@ gem 'turbolinks'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 # Use debugger
-gem 'debugger', group: [:development, :test]
+gem 'debugger2', group: [:development, :test]
 

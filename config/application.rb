@@ -26,11 +26,5 @@ module TestArtHelpdesk
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-
-    # If you want the logs displayed you have to do this before the call to setup
-    DataMapper::Logger.new($stdout, :debug)
-
-    # An in-memory Sqlite3 connection:
-    DataMapper.setup(:default, 'sqlite::memory:')
   end
 end
