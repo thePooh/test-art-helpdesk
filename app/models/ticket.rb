@@ -16,11 +16,23 @@ class Ticket
   field :subject, type: String
   field :body, type: String
 
-  field :state, type: Symbol
+  field :state, type: Symbol, default: :submitted
 
   STATES = [:submitted, :waiting, :hold, :cancelled, :completed]
 
-  # state_machine :state, default: :submitted do
-  #   # TODO: Fill in
-  # end
+  def files= files
+    files.each do |file|
+      screenshots.create(image: file)
+    end
+  end
+
+  state_machine :state do
+    # TODO: Fill in
+  end
+
+  private
+  def generate_uid
+    # TODO: generate random
+    self.uid = 3
+  end
 end

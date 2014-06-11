@@ -1,0 +1,16 @@
+%table
+  %tr
+    %th= t 'ticket.table.uid'
+    %th= t 'ticket.table.subject'
+    %th= t 'ticket.table.body'
+    %th= t 'ticket.table.state'
+    %th= t 'ticket.table.screenshots'
+  - @tickets.each do |ticket|
+    %tr
+      %td= ticket.uid
+      %td= ticket.subject
+      %td= ticket.body
+      %td= ticket.state
+      %td= image_thumbs ticket
+
+= paginate @tickets

@@ -20,9 +20,20 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  site:
+    logged_message: "You are logged as %{username}"
+    login: "Log in"
+    logout: "Log out"
   ticket:
+    table:
+      uid: "UID"
+      subject: "Subject"
+      body: "Body"
     form:
       send: "Submit ticket"
     info:
       created: "Ticket created"
       failed: "Ticket failed to create"
+  mail:
+    created:
+      subject: "Ticket %{uid} has been created"

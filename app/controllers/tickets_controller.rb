@@ -2,6 +2,10 @@ class TicketsController < ApplicationController
   before_action :authenticate_user!, only: [:index]
 
   def index
+    params[:state] ||= :submitted
+    @tickets = Ticket.all
+    @tickets = @tickets.where(state: params[:state]) unless params[:state] == 'all'
+    @tickets = @tickets.page(params[:page])
   end
 
   def show
@@ -12,12 +16,21 @@ class TicketsController < ApplicationController
   end
 
   def create
-    ticket = Ticket.new params.require(:ticket).permit!
+    ticket = Ticket.new permitted_params
+    ticket.files = params[:ticket][:files]
     if ticket.save
+      # TODO: Investigate rails 4 mailer
+      TicketMailer.ticket_created ticket
       flash.notice = t('ticket.info.created')
     else
       flash.alert = t('ticket.info.failed')
     end
     redirect_to :root
+  end
+
+  private
+
+  def permitted_params
+    params.require(:ticket).permit(:user_name, :user_email, :department_id, :subject, :body)
   end
 end

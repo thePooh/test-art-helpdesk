@@ -5,4 +5,10 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
   %body
+    %div.login-panel
+      - if current_user.present?
+        = t 'site.logged_message', username: current_user.name
+        = link_to t('site.logout'), destroy_user_session_path
+      - else
+        = link_to t('site.login'), user_session_path
     = yield
