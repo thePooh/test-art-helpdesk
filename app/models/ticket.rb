@@ -23,6 +23,9 @@ class Ticket
   field :state, type: Symbol
   attr_accessor :prev_state
 
+  validates_uniqueness_of :uid
+  before_validation :generate_uid, on: :create
+
   STATES = [:submitted, :assigned, :holded, :cancelled, :completed]
 
   def files= files
@@ -54,14 +57,26 @@ class Ticket
   end
 
   before_update do
+    if self.assignee_id_changed?
+      self.histories.create(from_state: self.state, to_state: self.state, user: self.assignee)
+    end
     if self.prev_state.present?
       self.histories.create(from_state: self.prev_state, to_state: self.state, user: self.assignee)
     end
   end
 
   private
+
+  #TODO: find less ugly way to do this. This may be non-thread-safe
   def generate_uid
-    # TODO: generate random
-    self.uid = 3
+    def tri vals
+      "#{vals.sample}#{vals.sample}#{vals.sample}"
+    end
+    chars = ("A".."Z").to_a
+    numbers = ("0".."9").to_a
+    self.uid = loop do
+      uid = "#{tri(chars)}-#{tri(numbers)}-#{tri(chars)}-#{tri(numbers)}-#{tri(chars)}"
+      break uid unless Ticket.where(uid: uid).exists?
+    end
   end
 end
