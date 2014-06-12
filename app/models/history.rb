@@ -8,11 +8,11 @@ class History
   field :from_state, type: Symbol
   field :to_state, type: Symbol
 
-  after_create :send_email
+  #TODO: Extract to observer
+  after_create :send_email, unless: -> { Rails.env.test? }
 
   private
 
-  #TODO: Extract to observer
   def send_email
     TicketMailer.ticket_updated self
   end

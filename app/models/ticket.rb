@@ -51,9 +51,11 @@ class Ticket
     before_transition do |object|
       object.prev_state = object.state
     end
+  end
 
-    after_transition do |object|
-      object.histories.create(from_state: object.prev_state, to_state: object.state, user: object.assignee)
+  before_update do
+    if self.prev_state.present?
+      self.histories.create(from_state: self.prev_state, to_state: self.state, user: self.assignee)
     end
   end
 

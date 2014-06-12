@@ -1,6 +1,6 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :ticket do
+    user_name Forgery(:name).full_name
+    user_email Forgery(:internet).email_address
   end
 end

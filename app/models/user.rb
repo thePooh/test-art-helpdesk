@@ -23,12 +23,16 @@ class User
     eos
   end
 
-  # From all the hacks...
+
+  # From all the hacks, it seemed the best one.
+  # Furthermore, it does not properly work with tests. *facepalm.jpg*
   # https://github.com/plataformatec/devise/issues/2949
-  class << self
-    def serialize_from_session(key, salt)
-      record = to_adapter.get(key[0]["$oid"])
-      record if record && record.authenticatable_salt == salt
+  unless Rails.env.test?
+    class << self
+      def serialize_from_session(key, salt)
+        record = to_adapter.get(key[0]["$oid"])
+        record if record && record.authenticatable_salt == salt
+      end
     end
   end
 end

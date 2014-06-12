@@ -40,5 +40,8 @@ gem 'debugger2', group: [:development, :test]
 
 # test
 
-gem 'rspec-rails'
-gem 'factory_girl_rails'
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'forgery'
+end
