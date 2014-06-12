@@ -21,14 +21,29 @@
 
 en:
   site:
+    settings: "Settings"
     logged_message: "You are logged as %{username}"
     login: "Log in"
     logout: "Log out"
+  user:
+    change_password: "Change password"
+    new_password: "New password:"
+    new_password_confirmation: "Confirm new password:"
+    table:
+      email: "Email"
+      name: "Name"
+      role: "Role"
+      actions: "Actions"
+    info:
+      created: "New user created"
+      pass_changed: "Password changed. Please, log in with new credentials."
+      failure: "Some error occured"
   ticket:
     table:
       uid: "UID"
       subject: "Subject"
       body: "Body"
+      actions: "Actions"
     form:
       send: "Submit ticket"
     info:

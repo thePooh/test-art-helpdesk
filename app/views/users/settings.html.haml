@@ -1,0 +1,8 @@
+%div
+  %h1= t 'user.change_password'
+  = form_tag password_path, method: :put do
+    = t 'user.new_password'
+    = password_field_tag 'password'
+    = t 'user.new_password_confirmation'
+    = password_field_tag 'password_confirmation'
+    = submit_tag t('user.change_password')

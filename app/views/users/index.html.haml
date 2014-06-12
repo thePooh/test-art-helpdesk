@@ -1,0 +1,14 @@
+%table
+  %tr
+    %th= t 'user.table.name'
+    %th= t 'user.table.role'
+    %th= t 'user.table.email'
+    %th= t 'user.table.actions'
+  - @users.each do |user|
+    %tr
+      %td= user.name
+      %td= user.role
+      %td= user.email
+      %td
+        /Some actions here
+
