@@ -5,4 +5,11 @@ class TicketMailer < ActionMailer::Base
     @ticket = ticket
     mail(to: ticket.user_email, subject: t('mail.created.subject', id: ticket.uid))
   end
+
+  def ticket_updated history
+    @history = history
+    @user = history.user
+    @ticket = history.ticket
+    mail(to: @ticket.user_email, subject: t('mail.updated.subject', name: user.name, id: ticket.uid))
+  end
 end

@@ -1,0 +1,7 @@
+= t('mail.updated.greeting', name: @ticket.user_name)
+
+= t('mail.updated.general_info', name: @user.name, prev_state: @history.from_state, state: @history.to_state, time: @history.created_at)
+
+= link_to ticket_url(@ticket)
+
+= t('mail.created.bye')

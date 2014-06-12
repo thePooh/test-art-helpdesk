@@ -9,6 +9,7 @@ class TicketsController < ApplicationController
   end
 
   def show
+    @ticket = Ticket.find params[:id]
   end
 
   def new
@@ -17,7 +18,9 @@ class TicketsController < ApplicationController
 
   def create
     ticket = Ticket.new permitted_params
-    ticket.files = params[:ticket][:files]
+
+    files = params[:ticket][:files]
+    ticket.files = files if files.present?
     if ticket.save
       # TODO: Investigate rails 4 mailer
       TicketMailer.ticket_created ticket

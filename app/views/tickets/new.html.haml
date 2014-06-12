@@ -1,7 +1,12 @@
 = form_for @ticket do |f|
+  %div.label= t 'ticket.form.email'
   = f.text_field :user_email
+  %div.label= t 'ticket.form.name'
   = f.text_field :user_name
+  %div.label= t 'ticket.form.subject'
   = f.text_field :subject
+  %div.label= t 'ticket.form.body'
   = f.text_area :body
+  %div.label= t 'ticket.form.files'
   = f.file_field "files[]", multiple: true
   = f.submit t('ticket.form.send')

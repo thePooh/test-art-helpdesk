@@ -1,6 +1,8 @@
 class User
   include Mongoid::Document
 
+  has_many :tickets, inverse_of: 'assignee'
+
   devise :database_authenticatable
 
   ## Database authenticatable

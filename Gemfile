@@ -29,8 +29,12 @@ gem 'kaminari'
 
 # DEVELOPMENT
 
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+group :development do
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+  # Opens letter in new window instead of sending them
+  gem 'letter_opener'
+end
 # Use debugger
 gem 'debugger2', group: [:development, :test]
 
