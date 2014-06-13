@@ -65,6 +65,10 @@ class Ticket
     end
   end
 
+  def to_param
+    self.uid
+  end
+
   private
 
   #TODO: find less ugly way to do this. This may be non-thread-safe

@@ -5,12 +5,15 @@
     %th= t 'ticket.table.body'
     %th= t 'ticket.table.state'
     %th= t 'ticket.table.screenshots'
+    %th= t 'ticket.table.actions'
   - @tickets.each do |ticket|
     %tr
-      %td= ticket.uid
+      %td= link_to ticket.uid, ticket_path(ticket)
       %td= ticket.subject
       %td= ticket.body
       %td= ticket.state
       %td= image_thumbs ticket
+      %td
+        = link_to t('ticket.actions.assign'), assign_ticket_path(ticket)
 
 = paginate @tickets

@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :tickets
+  resources :tickets do
+    member do
+      get :assign
+      get :hold
+      get :complete
+      get :cancel
+    end
+  end
 
   authenticated :user do
     resources :users

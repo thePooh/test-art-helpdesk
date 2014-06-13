@@ -1,0 +1,14 @@
+%h1= @ticket.subject
+%div= @ticket.uid
+
+%p= @ticket.body
+
+%h2= t 'ticket.table.state'
+%div= @ticket.state
+
+- if assigned_to_user? @ticket
+  - case @ticket.state
+  - when :assigned
+    = link_to t('ticket.actions.hold'), hold_ticket_path(@ticket)
+    = link_to t('ticket.actions.cancel'), cancel_ticket_path(@ticket)
+    = link_to t('ticket.actions.complete'), complete_ticket_path(@ticket)

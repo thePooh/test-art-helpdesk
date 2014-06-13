@@ -25,6 +25,8 @@ en:
     logged_message: "You are logged as %{username}"
     login: "Log in"
     logout: "Log out"
+    errors:
+      unassigned: "Sorry, you are not assigned to this ticket."
   user:
     change_password: "Change password"
     new_password: "New password:"
