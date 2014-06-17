@@ -1,6 +1,6 @@
 {
-  "name": "Helpdesk Realtime",
-  "version": "0.0.1",
+  "name": "helpdesk-realtime",
+  "version": "0.0.2",
   "dependencies": {
     "socket.io": "*",
     "redis": "*"

@@ -16,7 +16,7 @@
 /tmp
 
 # Ignore node modules
-/realtime/node-modules
+/realtime/node_modules
 
 # Ignore paperclip uploads
 /public/system

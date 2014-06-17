@@ -11,8 +11,10 @@ gem 'mongoid', github: 'mongoid/mongoid'
 gem 'mongoid-paperclip', :require => "mongoid_paperclip"
 # Managing user login
 gem 'devise'
-# Managin ticket transactions
+# Managing ticket transactions
 gem 'state_machine'
+# Pubsub support for socket.io
+gem 'redis'
 
 # ASSETS / VIEWS
 

@@ -17,7 +17,7 @@
 %p= @ticket.body
 
 %h2= t 'ticket.table.state'
-%div= @ticket.state
+%div.dynamic-state{ data: {uid: @ticket.uid} }= @ticket.state
 
 - @ticket.screenshots.each do |screenshot|
   = image_tag screenshot.image.url

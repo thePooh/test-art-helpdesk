@@ -65,6 +65,7 @@ class Ticket
       self.histories.create(from_state: self.state, to_state: self.state, user: self.assignee)
     end
     if self.prev_state.present?
+      $redis.publish 'state-change', {uid: self.uid, state: self.state}.to_json
       self.histories.create(from_state: self.prev_state, to_state: self.state, user: self.assignee)
     end
   end
