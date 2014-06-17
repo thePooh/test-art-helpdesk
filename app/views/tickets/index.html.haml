@@ -21,7 +21,7 @@
       %td= image_thumbs ticket
       %td
         - if ticket.assignee?
-          - if ticket.assignee == current_user
+          - if assigned_to_user? ticket
             = t 'ticket.info.assigned.me'
           - else
             = t 'ticket.info.assigned.to', name: ticket.assignee.name

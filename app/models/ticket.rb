@@ -20,6 +20,8 @@ class Ticket
   field :subject, type: String
   field :body, type: String
 
+  field :reply, type: String
+
   field :state, type: Symbol
   attr_accessor :prev_state
 

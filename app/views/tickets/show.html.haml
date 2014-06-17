@@ -16,6 +16,10 @@
 
 %p= @ticket.body
 
+%p= @ticket.reply
+- if assigned_to_user? @ticket
+  = render partial: 'reply_form', locals: { ticket: @ticket }
+
 %h2= t 'ticket.table.state'
 %div.dynamic-state{ data: {uid: @ticket.uid} }= @ticket.state
 

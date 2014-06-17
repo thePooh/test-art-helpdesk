@@ -1,7 +1,7 @@
 class TicketsController < ApplicationController
   before_action :authenticate_user!, except: [:new, :show]
-  before_action :load_ticket, only: [:show, :assign, :cancel, :hold, :complete]
-  before_action :check_assigned, only: [:cancel, :hold, :complete]
+  before_action :load_ticket, only: [:show, :assign, :cancel, :hold, :complete, :reply]
+  before_action :check_assigned, only: [:cancel, :hold, :complete, :reply]
 
   helper_method :assigned_to_user?
 
@@ -13,6 +13,14 @@ class TicketsController < ApplicationController
   end
 
   def show
+  end
+
+  def reply
+    @ticket.reply = params[:reply]
+    if @ticket.save
+      TicketMailer.ticket_replied(@ticket).deliver
+    end
+    redirect_to :back
   end
 
   def assign

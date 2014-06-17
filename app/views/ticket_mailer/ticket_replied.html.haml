@@ -1,6 +1,6 @@
 %p= t('mail.created.greeting', name: @ticket.user_name)
 
-%p= t('mail.updated.general_info', name: @user.name, prev_state: @history.from_state, state: @history.to_state, time: @history.created_at)
+%p= t('mail.replied.general_info_html', name: @ticket.assignee.name, reply: @ticket.reply)
 
 %p= link_to ticket_url(@ticket), ticket_url(@ticket)
 

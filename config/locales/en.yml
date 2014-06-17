@@ -42,6 +42,7 @@ en:
       failure: "Some error occured"
   ticket:
     actions:
+      reply: 'Send reply'
       assign: 'Assign to me'
     table:
       uid: "UID"
@@ -64,3 +65,5 @@ en:
       bye_html: "We will keep you updated, your problem will be solved very soon <br /> Helpdesk team"
     updated:
       general_info: "Our member %{name} changed your ticket state from %{prev_state} to %{state} at %{time}. You can view your ticket here:"
+    replied:
+      general_info_html: "Our member %{name} replied to your ticket: <blockquote>%{reply}</blockquote>"

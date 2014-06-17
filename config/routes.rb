@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get :hold
       get :complete
       get :cancel
+      post :reply
     end
   end
 
