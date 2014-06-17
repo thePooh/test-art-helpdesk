@@ -14,6 +14,6 @@ class History
   private
 
   def send_email
-    TicketMailer.ticket_updated self
+    TicketMailer.ticket_updated(self).deliver
   end
 end

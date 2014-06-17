@@ -1,7 +1,7 @@
-= t('mail.updated.greeting', name: @ticket.user_name)
+%p= t('mail.created.greeting', name: @ticket.user_name)
 
-= t('mail.updated.general_info', name: @user.name, prev_state: @history.from_state, state: @history.to_state, time: @history.created_at)
+%p= t('mail.updated.general_info', name: @user.name, prev_state: @history.from_state, state: @history.to_state, time: @history.created_at)
 
-= link_to ticket_url(@ticket)
+%p= link_to ticket_url(@ticket), ticket_url(@ticket)
 
-= t('mail.created.bye')
+%p= t('mail.created.bye')

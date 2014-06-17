@@ -1,7 +1,7 @@
 %h2 Show only:
 %nav
   %ul
-    - [:submitted, :assigned, :holded, :cancelled, :confirmed].each do |state|
+    - [:all, :submitted, :assigned, :holded, :cancelled, :confirmed].each do |state|
       %li= link_to state.to_s.capitalize, params.merge(state: state)
 
 %table
@@ -20,6 +20,12 @@
       %td= ticket.state
       %td= image_thumbs ticket
       %td
-        = link_to t('ticket.actions.assign'), assign_ticket_path(ticket)
+        - if ticket.assignee?
+          - if ticket.assignee == current_user
+            = t 'ticket.info.assigned.me'
+          - else
+            = t 'ticket.info.assigned.to', name: ticket.assignee.name
+        - else
+          = link_to t('ticket.actions.assign'), assign_ticket_path(ticket)
 
 = paginate @tickets

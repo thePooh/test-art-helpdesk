@@ -5,22 +5,27 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
   %body
-    %div.login-panel
-      - if current_user.present?
-        = t 'site.logged_message', username: current_user.name
-        = link_to t('site.logout'), destroy_user_session_path
+    %nav
+      %div.login-panel
+        - if current_user.present?
+          = t 'site.logged_message', username: current_user.name
+          = link_to t('site.logout'), destroy_user_session_path
 
-        = link_to t('site.settings'), settings_path
+          %ul
+            %li= link_to t('site.tickets'), tickets_path
+            %li= link_to t('site.settings'), settings_path
 
-        - if current_user.admin?
-          = link_to t('site.users'), users_path
-      - else
-        = link_to t('site.login'), user_session_path
+            - if current_user.admin?
+              %li= link_to t('site.users'), users_path
+        - else
+          = link_to t('site.login'), user_session_path
 
-    - if flash[:notice].present?
-      %div.flash-notice= flash[:notice]
+        = link_to t('site.new_ticket'), new_ticket_path
 
-    - if flash[:alert].present?
-      %div.flash-alert= flash[:alert]
+      - if flash[:notice].present?
+        %div.flash-notice= flash[:notice]
+
+      - if flash[:alert].present?
+        %div.flash-alert= flash[:alert]
 
     = yield
