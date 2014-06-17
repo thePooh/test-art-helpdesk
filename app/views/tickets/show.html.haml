@@ -6,6 +6,9 @@
 %h2= t 'ticket.table.state'
 %div= @ticket.state
 
+- @ticket.screenshots.each do |screenshot|
+  = image_tag screenshot.image.url
+
 - if assigned_to_user? @ticket
   - case @ticket.state
   - when :assigned

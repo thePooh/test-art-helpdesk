@@ -1,3 +1,9 @@
+%h2 Show only:
+%nav
+  %ul
+    - [:submitted, :assigned, :holded, :cancelled, :confirmed].each do |state|
+      %li= link_to state.to_s.capitalize, params.merge(state: state)
+
 %table
   %tr
     %th= t 'ticket.table.uid'

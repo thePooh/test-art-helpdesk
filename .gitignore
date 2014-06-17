@@ -17,3 +17,6 @@
 
 # Ignore node modules
 /realtime/node-modules
+
+# Ignore paperclip uploads
+/public/system

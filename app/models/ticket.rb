@@ -3,7 +3,7 @@ class Ticket
   include Mongoid::Timestamps
   include StateMachine::Integrations::Mongoid
 
-  embeds_many :screenshots
+  embeds_many :screenshots, cascade_callbacks: true
   belongs_to :department
   belongs_to :assignee, class_name: 'User'
   has_many :histories
@@ -30,7 +30,11 @@ class Ticket
 
   def files= files
     files.each do |file|
-      screenshots.create(image: file)
+      begin
+        screenshots.build(image: file)
+      rescue
+        self.errors.add :screenshots, I18n.t('ticket.errors.image')
+      end
     end
   end
 

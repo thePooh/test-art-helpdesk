@@ -43,11 +43,11 @@ class TicketsController < ApplicationController
   def create
     ticket = Ticket.new permitted_params
 
-    files = params[:ticket][:files]
+    files = params[:files]
     ticket.files = files if files.present?
     if ticket.save
       # TODO: Investigate rails 4 mailer
-      TicketMailer.ticket_created ticket
+      TicketMailer.ticket_created(ticket).deliver
       flash.notice = t('ticket.info.created')
     else
       flash.alert = t('ticket.info.failed')
