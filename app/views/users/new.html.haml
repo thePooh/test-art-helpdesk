@@ -1,0 +1,12 @@
+= form_for @user do |f|
+  %div.label= t 'user.form.name'
+  = f.text_field :name
+  %div.label= t 'user.form.email'
+  = f.text_field :email
+  %div.label= t 'user.form.password'
+  = f.password_field :password
+  %div.label= t 'user.form.password_confirmation'
+  = f.password_field :password_confirmation
+  %div.label= t 'user.form.role'
+  = f.select :role, options_for_select([:member, :admin])
+  = f.submit t('user.form.submit')

@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     else
       flash[:alert] = t 'user.info.failure'
     end
-    redirect_to :index
+    redirect_to action: :index
   end
 
   def settings
